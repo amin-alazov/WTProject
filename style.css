@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.custom-navbar {
+  background-color: #7eb8dc;
+}
+
+.custom-navbar .navbar-nav.me-auto .nav-link,
+.custom-navbar .navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  color: white !important;
+  font-weight: 500;
+  font-size: 16px;
+  transition: filter 0.3s ease;
+  margin-right: 15px;
+}
+
+.custom-navbar .navbar-nav.me-auto .nav-item:last-child .nav-link {
+  margin-right: 0;
+}
+
+.custom-navbar .navbar-nav.me-auto .nav-link:hover {
+  filter: brightness(80%);
+}
+
+.custom-navbar .navbar-nav.flex-row .nav-link,
+.custom-navbar .bi {
+  font-family: 'Poppins', sans-serif;
+  color: white !important;
+  transition: filter 0.3s ease;
+  margin-right: 0 !important;
+}
+
+.custom-navbar .navbar-nav.flex-row .nav-link:hover {
+  filter: brightness(80%);
+}
+.custom-navbar {
+  background-color: rgba(126, 184, 220, 0.85); 
+  backdrop-filter: blur(4px); 
+}
+
+[data-bs-theme="dark"] .custom-navbar .nav-link,
+[data-bs-theme="dark"] .custom-navbar .navbar-brand,
+[data-bs-theme="dark"] .custom-navbar .bi {
+  color: white !important;
+}
+
+
+
+
