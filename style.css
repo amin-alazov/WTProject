@@ -89,13 +89,13 @@
 }
 .card {
   border: 3px solid  #0041f5; 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); ы
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); 
   border-radius: 9px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px); /* легкий подъём при наведении */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); /* усиленная тень */
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
 }
 
