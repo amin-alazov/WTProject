@@ -98,4 +98,49 @@
   transform: translateY(-5px); 
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
 }
+.slider-img {
+  height: 460px; 
+  object-fit: cover; 
+}
+#slider {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
+#slider {
+  opacity: 0;
+  transform: translateY(20px); 
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+#slider.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.section-light {
+  background-color: #f8f9fa; 
+  color: #212529;
+}
+
+
+body.dark-theme .section-light {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.section-light {
+  background-color: #e9ecef; 
+  color: #212529;
+}
+
+
+body.dark-theme .section-light {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+p {
+  font-family: 'Merriweather', serif;
+}
