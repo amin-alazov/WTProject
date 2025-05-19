@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body>
+<body class="login-page">
 
 <header>
  
@@ -24,12 +24,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Hakkımda</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Hakkımda</a></li>
           <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
           <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
           <li class="nav-item"><a class="nav-link" href="miras.html">Miras</a></li>
           <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Login</a></li>
+          <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+
         </ul>
         <div class="d-flex align-items-center ms-auto">
           <ul class="navbar-nav flex-row gap-2">
@@ -98,15 +100,16 @@
   AOS.init();
 
   const themeToggleBtn = document.getElementById('themeToggleBtn');
-  const themeIcon = document.getElementById('themeIcon');
-  const html = document.documentElement;
+const themeIcon = document.getElementById('themeIcon');
+const html = document.documentElement;
 
-  themeToggleBtn.addEventListener('click', () => {
-    const isDark = html.getAttribute('data-bs-theme') === 'dark';
-    html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
-    themeIcon.classList.toggle('bi-sun', isDark);
-    themeIcon.classList.toggle('bi-moon', !isDark);
-  });
+themeToggleBtn.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-bs-theme') === 'dark';
+  html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
+  themeIcon.classList.toggle('bi-sun', isDark);
+  themeIcon.classList.toggle('bi-moon', !isDark);
+});
+
 </script>
 </body>
 </html>
