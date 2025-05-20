@@ -140,18 +140,28 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeIcon = document.getElementById('themeIcon');
-    const html = document.documentElement;
+  AOS.init();
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  const html = document.documentElement;
 
-    themeToggleBtn.addEventListener('click', () => {
-      const isDark = html.getAttribute('data-bs-theme') === 'dark';
-      html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
-      themeIcon.classList.toggle('bi-sun', isDark);
-      themeIcon.classList.toggle('bi-moon', !isDark);
-    });
-  </script>
+  // При загрузке страницы: применить сохранённую тему
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-bs-theme', savedTheme);
+  themeIcon.classList.toggle('bi-sun', savedTheme === 'dark');
+  themeIcon.classList.toggle('bi-moon', savedTheme === 'light');
+
+  // Переключение темы
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-bs-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-bs-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // сохранить выбор
+
+    themeIcon.classList.toggle('bi-sun', newTheme === 'dark');
+    themeIcon.classList.toggle('bi-moon', newTheme === 'light');
+  });
+</script>
+
 </body>
 </html>
-

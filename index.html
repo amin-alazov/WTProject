@@ -158,13 +158,30 @@
   const themeIcon = document.getElementById('themeIcon');
   const html = document.documentElement;
 
+  
+  function applyTheme(theme) {
+    html.setAttribute('data-bs-theme', theme);
+    if (theme === 'dark') {
+      themeIcon.classList.remove('bi-sun');
+      themeIcon.classList.add('bi-moon');
+    } else {
+      themeIcon.classList.remove('bi-moon');
+      themeIcon.classList.add('bi-sun');
+    }
+  }
+
+  
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  applyTheme(savedTheme);
+
+  
   themeToggleBtn.addEventListener('click', () => {
-    const isDark = html.getAttribute('data-bs-theme') === 'dark';
-    html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
-    themeIcon.classList.toggle('bi-sun', isDark);
-    themeIcon.classList.toggle('bi-moon', !isDark);
+    const newTheme = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
   });
 </script>
+
 <footer class="bg-dark text-white py-4 mt-5">
   <div class="container text-center">
     <div class="mb-3">

@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $valid_username = "b231210576@sakarya.edu.tr";
 $valid_password = "b231210576";
 
@@ -8,7 +6,6 @@ $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
 if ($username === $valid_username && $password === $valid_password) {
-    $_SESSION['username'] = $username;
     echo "<!DOCTYPE html>
 <html lang='tr'>
 <head>
@@ -19,13 +16,13 @@ if ($username === $valid_username && $password === $valid_password) {
 <body class='bg-light'>
     <div class='container mt-5'>
         <div class='alert alert-success text-center'>
-            Hoşgeldiniz $password
+            Hoşgeldiniz $username
         </div>
     </div>
 </body>
 </html>";
 } else {
-    header("Location: login.html");
+    header('Location: login.html');
     exit();
 }
 ?>
