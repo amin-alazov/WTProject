@@ -50,22 +50,22 @@
   <div class="container">
     <h2 class="text-center mb-4" data-aos="fade-down">İletişim Formu</h2>
 
-<form @submit.prevent="vueValidate" id="iletisimForm">
+<form action="iletisim.php" method="POST" id="iletisimForm" @submit.prevent="vueValidate">
   <div class="mb-3" data-aos="fade-up" data-aos-delay="100">
     <label for="ad" class="form-label">Ad Soyad</label>
-    <input type="text" id="ad" v-model="form.ad" class="form-control">
+    <input type="text" id="ad" name="ad" v-model="form.ad" class="form-control">
   </div>
   <div class="mb-3" data-aos="fade-up" data-aos-delay="200">
     <label for="email" class="form-label">E-Posta</label>
-    <input type="email" id="email" v-model="form.email" class="form-control">
+    <input type="email" id="email" name="email" v-model="form.email" class="form-control">
   </div>
   <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
     <label for="telefon" class="form-label">Telefon</label>
-    <input type="text" id="telefon" v-model="form.telefon" class="form-control">
+    <input type="text" id="telefon" name="telefon" v-model="form.telefon" class="form-control">
   </div>
   <div class="mb-3" data-aos="fade-up" data-aos-delay="400">
     <label for="konu" class="form-label">Konu</label>
-    <select id="konu" v-model="form.konu" class="form-select">
+    <select id="konu" name="konu" v-model="form.konu" class="form-select">
       <option disabled value="">Seçiniz</option>
       <option>Öneri</option>
       <option>Şikayet</option>
@@ -74,10 +74,10 @@
   </div>
   <div class="mb-3" data-aos="fade-up" data-aos-delay="500">
     <label for="mesaj" class="form-label">Mesaj</label>
-    <textarea id="mesaj" v-model="form.mesaj" class="form-control" rows="4"></textarea>
+    <textarea id="mesaj" name="mesaj" v-model="form.mesaj" class="form-control" rows="4"></textarea>
   </div>
   <div class="d-flex flex-wrap gap-3" data-aos="zoom-in" data-aos-delay="600">
-    <button type="submit" class="btn btn-primary" @click="vueValidate">Vue.js ile Gönder</button>
+    <button type="submit" class="btn btn-primary">Vue.js ile Gönder</button>
     <button type="reset" class="btn btn-secondary">Temizle</button>
     <button type="button" class="btn btn-success" onclick="vanillaValidate()">JavaScript ile Gönder</button>
   </div>
@@ -142,46 +142,57 @@
     methods: {
       vueValidate() {
         const { ad, email, telefon, konu, mesaj } = this.form;
+
         if (!ad || !email || !telefon || !konu || !mesaj) {
-          this.hata = "Lütfen tüm alanları doldurun.";
-          return;
-        }
-        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-          this.hata = "Geçerli bir e-posta giriniz.";
-          return;
-        }
-        if (!/^\d+$/.test(telefon)) {
-          this.hata = "Telefon sadece rakamlardan oluşmalıdır.";
-          return;
-        }
-        this.hata = '';
-        alert("Vue.js ile form başarıyla gönderildi!");
-      }
+    this.hata = "Lütfen tüm alanları doldurun.";
+    return;
+  }
+
+  if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    this.hata = "Geçerli bir e-posta giriniz.";
+    return;
+  }
+
+  if (!/^\d+$/.test(telefon)) {
+    this.hata = "Telefon sadece rakamlardan oluşmalıdır.";
+    return;
+  }
+
+  this.hata = '';
+
+  // 🔽 Doğrulama tamam — formu gönder
+  document.getElementById("iletisimForm").submit();
+}
+
     }
   }).mount("#app");
 
   // JavaScript ile doğrulama
   function vanillaValidate() {
-    const ad = document.getElementById("ad").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const telefon = document.getElementById("telefon").value.trim();
-    const konu = document.getElementById("konu").value;
-    const mesaj = document.getElementById("mesaj").value.trim();
+  const ad = document.getElementById("ad").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const telefon = document.getElementById("telefon").value.trim();
+  const konu = document.getElementById("konu").value;
+  const mesaj = document.getElementById("mesaj").value.trim();
 
-    if (!ad || !email || !telefon || !konu || !mesaj) {
-      alert("Tüm alanları doldurun.");
-      return;
-    }
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      alert("Geçerli bir e-posta giriniz.");
-      return;
-    }
-    if (!/^\d+$/.test(telefon)) {
-      alert("Telefon sadece rakam içermeli.");
-      return;
-    }
-    alert("JavaScript ile form başarıyla gönderildi!");
+  if (!ad || !email || !telefon || !konu || !mesaj) {
+    alert("Tüm alanları doldurun.");
+    return;
   }
+  if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    alert("Geçerli bir e-posta giriniz.");
+    return;
+  }
+  if (!/^\d+$/.test(telefon)) {
+    alert("Telefon sadece rakam içermeli.");
+    return;
+  }
+
+  alert(`Ad Soyad: ${ad}\nEmail: ${email}\nTelefon: ${telefon}\nKonu: ${konu}\nMesaj: ${mesaj}`);
+  alert("JavaScript ile form başarıyla gönderildi!");
+}
+
+
 </script>
 </body>
 </html>
